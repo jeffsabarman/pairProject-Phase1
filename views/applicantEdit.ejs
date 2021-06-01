@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Applicant</title>
+</head>
+<body>
+    <form method="POST">
+        <label >First Name:</label><br>
+        <input type="text" id="first_name" name="first_name" value="<%= data.first_name %>"><br>
+        <label >Last Name:</label><br>
+        <input type="text" id="last_name" name="last_name" value="<%= data.last_name %>"><br>
+        <label >Email:</label><br>
+        <input type="text" id="email" name="email" value="<%= data.email %>"><br>
+        <label >Birth Date:</label><br>
+        <input type="text" id="birth_date" name="birth_date" value="<%= data.birth_date.toLocaleString().substring(0, 9) %>"><br>
+
+        
+
+        <label >Position:</label><br>
+        <input type="radio" id="sales" name="position" value="Sales"  <%= data.position === "Sales" ? "checked" : "" %> >
+        <label for="sales">Sales</label><br>
+        <input type="radio" id="Full-Stack Developer" name="position" value="Full-Stack Developer"  <%= data.position === "Full-Stack Developer" ? "checked" : "" %>>
+        <label for="Full-Stack Developer">Full-Stack Developer</label><br>
+        
+
+
+        <label >Gender:</label><br>
+        <input type="radio" id="male" name="gender" value="Male" <%= data.gender === "Male" ? "checked" : "" %>>
+        <label for="male">Male</label><br>
+        <input type="radio" id="female" name="gender" value="Female" <%= data.gender === "Female" ? "checked" : "" %>>
+        <label for="female">Female</label><br>
+        
+        <input type="submit" value="Submit">
+      </form> 
+    
+</body>
+</html>

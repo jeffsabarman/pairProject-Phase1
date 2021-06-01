@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interviewers</title>
+</head>
+<body>
+    <H1>Interviewers</H1>
+    <a href="http://localhost:3000/">Home</a>
+    <a href="http://localhost:3000/interviewers/add">Add Interviewers</a>
+    <table border="black">
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Birth Date</th>
+          <th>Email</th>
+          <th>Gender</th>
+          <th>Department</th>
+          <th>Action</th>
+        </tr>
+          <% for(let i = 0;i< data.length; i++ ) { %>
+        <tr>
+         
+          <td><%= data[i].first_name %></td>
+          <td><%= data[i].last_name%></td>
+          <td><%= data[i].birth_date.toLocaleString().substring(0, 9)  %></td>
+          <td><%= data[i].email%></td>
+          <td><%= data[i].gender%></td>
+          <td><%= data[i].department%></td>
+     
+          <td>
+            <a href="/interviewers/edit/<%=data[i].id %>"> Edit</a> |
+            <a href="/interviewers/delete/<%=data[i].id %>"> Delete</a>
+            
+        </tr>
+        <% } %>
+           
+         
+</body>
+</html>
