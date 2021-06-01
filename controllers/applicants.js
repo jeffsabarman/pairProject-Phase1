@@ -80,7 +80,19 @@ class Controller {
         .catch(err => {
             res.send(err);
         })
-}
+    }
+    static scheduling(req,res){
+        const id = +req.params.id;
+        let dataApplicant = {}
+        Applicant.findByPk(id, {include: Interviewer})
+        .then(data => {
+            dataApplicant = data
+            return Interviewer.findAll()
+        })
+        .then((interviewer) => {
+            res.render('interviewSchedule', {data:dataApplicant, interviewer})
+        })
+    }
         
 }
 module.exports = Controller

@@ -83,7 +83,8 @@ class Controller {
         .catch(err => {
             res.send(err);
         })
-}
+    }
+   
         
 }
 module.exports = Controller
