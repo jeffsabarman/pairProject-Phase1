@@ -1,4 +1,6 @@
 const {Applicant, Interviewer} = require('../models/index')
+const calculateAge = require('../helpers/calculateAge');
+const formatDate = require('../helpers/formatDate');
 
 class Controller {
 
@@ -8,7 +10,7 @@ class Controller {
         })
         .then((data) => {
             
-            res.render('interviewers', {data})
+            res.render('interviewers', {data, calculateAge})
         })
         .catch((err) => {
             res.send(err)
@@ -53,7 +55,8 @@ class Controller {
         const newData = {
             first_name : req.body.first_name,
             last_name : req.body.last_name,
-            birth_date : new Date(req.body.birth_date.toLocaleString().substring(0, 9)),
+            // birth_date : new Date(req.body.birth_date.toLocaleString().substring(0, 9)),
+            birth_date : req.body.birth_date,
             email : req.body.email,
             gender : req.body.gender,
             department: req.body.department
@@ -85,6 +88,20 @@ class Controller {
         })
     }
    
+    static lookApplicants(req, res) {
+        const id = +req.params.id;
+
+        Interviewer
+            .findByPk(id, {
+                include : [Applicant]
+            })
+            .then(data => {
+                res.render('lookApplicants', {data, calculateAge, formatDate});
+            })
+            .catch(err => {
+                res.send(err);
+            })
+    }
         
 }
 module.exports = Controller

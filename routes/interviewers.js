@@ -12,6 +12,8 @@ router.post('/edit/:id', Controller.editPost)
 
 router.get('/delete/:id',  Controller.delete) // belum ada konfimrasi buat delte
 
+router.get('/lookApplicants/:id', Controller.lookApplicants)
+
 
 
 module.exports = router
