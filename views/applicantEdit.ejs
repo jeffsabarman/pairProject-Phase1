@@ -7,15 +7,20 @@
     <title>Edit Applicant</title>
 </head>
 <body>
+    <a href="/applicants"> List Applicants</a>
+    <a href="/interviewers"> List Interviewers</a>
+    <br>
+    <h1>Edit Applicant</h1>
+    <br>
     <form method="POST">
         <label >First Name:</label><br>
         <input type="text" id="first_name" name="first_name" value="<%= data.first_name %>"><br>
         <label >Last Name:</label><br>
         <input type="text" id="last_name" name="last_name" value="<%= data.last_name %>"><br>
         <label >Email:</label><br>
-        <input type="text" id="email" name="email" value="<%= data.email %>"><br>
+        <input type="email" id="email" name="email" value="<%= data.email %>"><br>
         <label >Birth Date:</label><br>
-        <input type="text" id="birth_date" name="birth_date" value="<%= data.birth_date.toLocaleString().substring(0, 9) %>"><br>
+        <input type="date" id="birth_date" name="birth_date" value="<%= data.birth_date.toISOString().substring(0, 10) %>"><br>
 
         
 

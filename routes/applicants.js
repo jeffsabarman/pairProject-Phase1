@@ -13,6 +13,13 @@ router.post('/edit/:id', Controller.editPost)
 router.get('/delete/:id',  Controller.delete) // belum ada konfimrasi buat delte
 
 router.get('/schedule/:id', Controller.scheduling)
+router.post('/schedule/:id', Controller.schedulingPost)
+
+router.get('/sendSchedule/:id', Controller.sendSchedule)
+
+// router.get('/schedule/:id/delete', Controller.deleteSchedule)
+
+
 
 
 module.exports = router

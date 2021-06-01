@@ -4,10 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Schedule Interview</title>
 </head>
 <body>
-    <%= JSON.stringify(data)%>
-    <%= JSON.stringify(interviewer)%>
+    <a href="/applicants"> List Applicants</a>
+    <a href="/interviewers"> List Interviewers</a>
+    <br>
+    <br>
+    <h1><%= data.fullName() %> </h1>
+    <br>
+    <br>
+    <form action="/applicants/schedule/<%= data.id %>" method="POST">
+    <label for="interviewer_id">Assign Interviewer</label><br>
+    <select name="interviewer_id" id="interviewer_id">
+        <% interviewer.forEach(el => { %> 
+        <option value="<%= el.id %>"><%= el.fullName() %></option>
+        <% })  %> 
+    </select>
+    <br>
+    <br>
+    <label for="schedule_date">Interview Schedule</label><br>
+    <input type="date" name="schedule_date" id="schedule_date">
+    <input type="time" name="time" id="time">
+    <br>
+    <br>
+    <label for="interview_type">Interview Type</label><br>
+    <select name="interview_type" id="interview_type">
+        <option value="Video Call">Video Call</option>
+        <option value="Phone Call">Phone Call</option>
+        <option value="On Site">On Site</option>
+    </select>
+    <br>
+    <br>
+    <button type="submit">Schedule Interview</button>
+    </form>
+    <br>
+    <br>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Inteviewer Name</th>
+                <th>Department</th>
+                <th>Schedule Interview</th>
+                <th>Interview Type</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <% data.Interviewers.forEach(el => { %> 
+                <tr>
+                    <td><%= el.fullName() %> </td>
+                    <td><%= el.department %> </td>
+                    <td><%= formatDate(el.ApplicantInterviewer.schedule_date) %> </td>
+                    <td><%= el.ApplicantInterviewer.interview_type %> </td>
+                   
+                </tr>
+            <% }) %> 
+        </tbody>
+    </table>
+    <br>
+    <br>
+    <button> 
+        <a href="/applicants/sendSchedule/<%= data.id %>" style="text-decoration: none; color: black;"> Send Email</a>
+    </button>
 </body>
 </html>
