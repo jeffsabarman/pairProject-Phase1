@@ -18,7 +18,7 @@
     <label for="interviewer_id">Assign Interviewer</label><br>
     <select name="interviewer_id" id="interviewer_id">
         <% interviewer.forEach(el => { %> 
-        <option value="<%= el.id %>"><%= el.fullName() %></option>
+        <option value="<%= el.id %>"><%= Interviewer.nameAndDepartment(el.fullName(), el.department) %></option>
         <% })  %> 
     </select>
     <br>

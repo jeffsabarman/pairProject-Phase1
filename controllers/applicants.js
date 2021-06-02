@@ -92,7 +92,7 @@ class Controller {
             return Interviewer.findAll()
         })
         .then((interviewer) => {
-            res.render('interviewSchedule', {data:dataApplicant, interviewer, formatDate})
+            res.render('interviewSchedule', {data:dataApplicant, interviewer, formatDate, Interviewer})
             // res.send(dataApplicant);
         })
         .catch(err => {
