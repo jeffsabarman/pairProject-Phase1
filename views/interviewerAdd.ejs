@@ -25,15 +25,15 @@
                value="2000-07-22">
         <br>
         <br>
-
-        <label >Department:</label><br>
-        <input type="radio" id="Human Resources" name="department" value="Human Resources">
-        <label >Human Resources</label><br>
-        <input type="radio" id="Information Technology" name="department" value="Information Technology">
-        <label >Information Technology</label><br>
-        <input type="radio" id="Sales & Marketing" name="department" value="Sales & Marketing">
-        <label >Sales & Marketing</label><br>
         <br>
+
+        <label for="department">Choose a Department:</label>
+        <select id="department">
+        <option value=""  name="department">-- Department --</option>
+        <option value="Information Technology" id="Human Resources" name="department">Information Technology</option>
+        <option value="Full-Stack Developer" id="Information Technology" name="department">Full-Stack Developer</option>
+        <option value="Sales & Marketing" id="Sales & Marketing" name="department" >Sales & Marketing</option>
+        </select>
         
         <label >Gender:</label><br>
         <input type="radio" id="male" name="gender" value="Male">
