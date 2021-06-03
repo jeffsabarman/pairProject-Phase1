@@ -19,7 +19,7 @@ app.use('/', router)
 
 
 // const port = process.env.PORT || 3000;
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
     console.log(`App listening at http://localhost:${PORT}`)
