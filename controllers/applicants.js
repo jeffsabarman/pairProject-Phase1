@@ -14,10 +14,10 @@ class Controller {
         })
     }
     static add(req,res){
-        res.render('applicantAdd')
+        const errors = req.query.errors;
+        res.render('applicantAdd', { errors });
     }
     static addPost(req,res){
-    //    console.log(req.body);
     const newData = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -31,7 +31,12 @@ class Controller {
             res.redirect('/applicants')
         })
         .catch((err) => {
-            res.send(err)
+            if (err.name === "SequelizeValidationError") {
+                const errors = err.errors.map(el => el.message);
+                res.redirect(`/applicants/add?errors=${errors}`);
+            } else {
+                res.send(err)
+            }
         })
     }
 
@@ -48,7 +53,6 @@ class Controller {
     }
     static editPost(req,res){
         const id = +req.params.id;
-        console.log(req.body);
         const newData = {
             first_name : req.body.first_name,
             last_name : req.body.last_name,
@@ -69,6 +73,7 @@ class Controller {
             res.send(err)
         })
     }
+
     static delete(req,res){
         const id = +req.params.id;
         Applicant.destroy({
@@ -83,6 +88,7 @@ class Controller {
             res.send(err);
         })
     }
+
     static scheduling(req,res){
         const id = +req.params.id;
         let dataApplicant = {};
@@ -169,15 +175,14 @@ class Controller {
                 const mailOptions = {
                     from: 'h8companyofficial@gmail.com',
                     to: emailTo,
-                    subject: 'Apply Confirmation',
+                    subject: 'Schedule Interview H8-Company Information',
                     html: htmlValue
                 };
         
                 transporter.sendMail(mailOptions, function(error, info){
                     if (error) {
-                        console.log(error);
+                        res.send(error)
                     } else {
-                        console.log('Email sent: ' + info.response);
                         res.redirect('/applicants');
                     }
                 }); 
@@ -187,26 +192,5 @@ class Controller {
 
 
     }
-        
-    // static deleteSchedule(req, res) {
-    //     const id = +req.params.id;
-    //     let applicantId = 0;
-    //     ApplicantInterviewer
-    //         .findByPk(id)
-    //         .then(data => {
-    //             applicantId = data.applicant_id;
-    //             return ApplicantInterviewer.destroy({
-    //                 where : {
-    //                     id
-    //                 }
-    //             })
-    //         })
-    //         .then(() => {
-    //             res.redirect(`/applicants/schedule/${applicantId}`)
-    //         })
-    //         .catch(err => {
-    //             res.send(err);
-    //         })
-    // }
 }
 module.exports = Controller

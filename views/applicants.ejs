@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Applicants</title>
-</head>
-<body>
-    <H1>Applicants</H1>
-    <a href="http://localhost:3000/">Home</a>
-    <a href="http://localhost:3000/applicants/add">Add Applicant</a>
-    <table border="black">
-        <tr>
+<%- include('partials/header', {title : 'Applicants Page'}) %> 
+  <%- include('partials/nav') %> 
+    <h1 class="text-center" style="margin-top: 80px;margin-bottom: 20px;">Applicants</h1>
+    <div class="text-center m-5">
+      <a href="http://localhost:3000/applicants/add" class="text-decoration-none p-2 bg-success rounded" style="color: white;">Add Applicant</a>
+    </div>
+    <table class="table" style="margin:auto;">
+        <tr class="bg-light">
           <th>Name</th>
           <th>Age</th>
           <th>Email</th>
@@ -29,12 +23,10 @@
           <td><%= data[i].gender%></td>
      
           <td>
-            <a href="/applicants/edit/<%=data[i].id %>"> Edit</a> |
-            <a href="/applicants/delete/<%=data[i].id %>"> Delete</a> |
-            <a href="/applicants/schedule/<%=data[i].id %>"> Schedule</a>
+            <a href="/applicants/edit/<%=data[i].id %>" class="text-decoration-none p-2 bg-warning rounded" style="color: white;">Edit</a>
+            <a href="/applicants/delete/<%=data[i].id %>" class="text-decoration-none p-2 bg-danger rounded" style="color: white;">Delete</a>
+            <a href="/applicants/schedule/<%=data[i].id %>" class="text-decoration-none p-2 bg-info rounded" style="color: white;">Schedule</a>
         </tr>
         <% } %>
-           
-          
-</body>
-</html>
+    </table>
+<%- include('partials/footer') %> 

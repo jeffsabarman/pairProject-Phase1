@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <form method="POST">
-        <label >Username:</label><br>
-        <input type="text" id="uniqueid" name="uniqueid" ><br>
-        <label >Password:</label><br>
-        <input type="text" id="password" name="password" ><br>
-
-        <input type="submit" value="Submit">
+<%- include('partials/header', {title : 'Login Page'}) %> 
+    <h1 class="text-center" style="margin-top: 100px; margin-bottom: 50px;">Admin Login</h1>
+    <form method="POST" style="margin: auto;" class="w-50">
+        <div class="form-group">
+            <label>Username:</label>
+            <input type="text" id="username" name="username" class="form-control">
+        </div>
+        <div class="form-group">
+            <label>Password:</label>
+            <input type="password" id="password" name="password" class="form-control">
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
     </form>
-</body>
-</html>
+    <br>
+    <% if (notAdmin)  { %> 
+        <p style="margin: auto;" class="w-50 bg-danger text-white p-2 rounded text-center"><%= notAdmin %> </p>
+    <% } %> 
+<%- include('partials/footer') %> 

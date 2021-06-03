@@ -20,12 +20,41 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Applicant.init({
-    first_name: DataTypes.STRING,
+    first_name: {
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : "First Name Field Is Required!"}
+      }
+    },
     last_name: DataTypes.STRING,
-    birth_date: DataTypes.DATE,
-    gender: DataTypes.STRING,
-    email: DataTypes.STRING,
-    position: DataTypes.STRING
+    birth_date: {
+      type : DataTypes.DATE,
+      validate : {
+        notEmpty : {msg : "Birth Date Field Is Required!"}
+      }
+    },
+    gender: {
+      type: DataTypes.STRING,
+      validate : {
+        checkNull(value) {
+          if (!value) {
+            throw new Error("Gender Field Is Required!");
+          }
+        }
+      }
+    },
+    email:{
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : "Email Name Field Is Required!"}
+      }
+    },
+    position: {
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : "Position Field Is Required!"}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Applicant',

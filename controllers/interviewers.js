@@ -17,10 +17,11 @@ class Controller {
         })
     }
     static add(req,res){
-        res.render('interviewerAdd')
+        const errors = req.query.errors;
+        res.render('interviewerAdd', {errors})
     }
     static addPost(req,res){
-       console.log(req.body);
+
     const newData = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
@@ -34,7 +35,12 @@ class Controller {
             res.redirect('/interviewers')
         })
         .catch((err) => {
-            res.send(err)
+            if (err.name === "SequelizeValidationError") {
+                const errors = err.errors.map(el => el.message)
+                res.redirect(`/interviewers/add?errors=${errors}`)
+            } else {
+                res.send(err)
+            }
         })
     }
 
@@ -51,7 +57,6 @@ class Controller {
     }
     static editPost(req,res){
         const id = +req.params.id;
-        console.log(req.body);
         const newData = {
             first_name : req.body.first_name,
             last_name : req.body.last_name,

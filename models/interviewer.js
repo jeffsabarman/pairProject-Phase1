@@ -24,12 +24,32 @@ module.exports = (sequelize, DataTypes) => {
     }
   };
   Interviewer.init({
-    first_name: DataTypes.STRING,
+    first_name: {
+      type : DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : 'First Name Field Is Required!'}
+      }
+    },
     last_name: DataTypes.STRING,
-    birth_date: DataTypes.DATE,
+    birth_date: {
+      type : DataTypes.DATE,
+      validate : {
+        notEmpty : {msg : 'Birth Date Field Is Required!'}
+      }
+    },
     gender: DataTypes.STRING,
-    email: DataTypes.STRING,
-    department: DataTypes.STRING
+    email: {
+      type: DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : 'Email Field Is Required!'}
+      }
+    },
+    department: {
+      type : DataTypes.STRING,
+      validate : {
+        notEmpty : {msg : 'Department Field Is Required!'}
+      }
+    }
   }, {
     sequelize,
     modelName: 'Interviewer',

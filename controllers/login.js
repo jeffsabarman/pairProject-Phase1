@@ -1,13 +1,16 @@
 class Controller {
 
     static login(req,res){
-        console.log(req.session);
-        res.render('login')
+        const notAdmin = req.query.notAdmin; 
+        res.render('login', {notAdmin})
     }
     static loginPost(req,res){
-        req.session.loginStatus = true
-        console.log(req.session.loginStatus);
-        res.redirect('/')
+        if (req.body.username === "admin" && req.body.password === "admin") {
+            req.session.loginStatus = true
+            res.redirect('/')
+        } else {
+            res.redirect('/login?notAdmin=Wrong Username Or Password');
+        }
     }
 }
 module.exports = Controller

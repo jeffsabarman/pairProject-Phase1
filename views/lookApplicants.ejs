@@ -1,19 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Look Applicants</title>
-</head>
-<body>
-    <a href="/applicants"> List Applicants</a>
-    <a href="/interviewers"> List Interviewers</a>
+<%- include('partials/header', {title : 'Interviewer Schedule Page'}) %> 
+<%- include('partials/nav') %> 
+    <h1 class="text-center" style="margin-top: 80px;margin-bottom: 50px;">List Applicants For : <%= data.fullName() %> </h1>
     <br>
-    <h1><%= data.fullName() %> </h1>
-    <br>
-    <table border="black">
-        <tr>
+    <table class="table" style="margin:auto;">
+        <tr class="bg-light">
           <th>Applicant Name</th>
           <th>Applicant Age</th>
           <th>Applicant Email</th>
