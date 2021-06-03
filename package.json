@@ -2,7 +2,7 @@
   "name": "pairproject-phase1",
   "version": "1.0.0",
   "description": "Pair Project Phase 1 HACKTIV8",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
