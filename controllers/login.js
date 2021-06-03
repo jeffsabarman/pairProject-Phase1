@@ -7,7 +7,7 @@ class Controller {
     static loginPost(req,res){
         req.session.loginStatus = true
         console.log(req.session.loginStatus);
-        res.render('login')
+        res.redirect('/')
     }
 }
 module.exports = Controller
