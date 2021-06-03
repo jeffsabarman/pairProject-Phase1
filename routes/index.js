@@ -8,8 +8,8 @@ const login = require('./login')
 
 router.use('/', home)
 router.use('/login', login)
-router.use(loginCheck)
-router.use('/applicants', applicants)
-router.use('/interviewers', interviewers)
+// router.use(loginCheck)
+router.use('/applicants',loginCheck, applicants)
+router.use('/interviewers',loginCheck, interviewers)
 
 module.exports = router

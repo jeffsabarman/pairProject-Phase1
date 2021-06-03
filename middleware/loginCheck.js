@@ -1,4 +1,4 @@
-// const session = require("express-session")
+
 const loginCheck = (req,res, next) => {
 
     if (req.session.loginStatus ) {
@@ -9,7 +9,7 @@ const loginCheck = (req,res, next) => {
     else {
         console.log(req.session.loginStatus, "status");
         res.redirect('/login')
-        next()
+        
     }
    
 }
